@@ -15,47 +15,56 @@ export default function Home() {
   }, [])
 
   return (
-    <div style={{ fontFamily: 'Segoe UI, sans-serif', backgroundColor: '#f4f7f6', minHeight: '100vh' }}>
-      {/* Header - Modern Look */}
-      <header style={{ backgroundColor: '#1a73e8', color: 'white', padding: '25px', textAlign: 'center', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
-        <h1 style={{ margin: 0, fontSize: '2rem' }}>Sarkari Naukri Portal 🚀</h1>
-        <p style={{ marginTop: '5px', opacity: '0.9' }}>Sabse Tez aur Sahi Job Updates</p>
+    <div style={{ fontFamily: 'Segoe UI, sans-serif', backgroundColor: '#f0f2f5', minHeight: '100vh' }}>
+      
+      {/* Top Banner with Your Name */}
+      <header style={{ backgroundColor: '#1a73e8', color: 'white', padding: '40px 20px', textAlign: 'center', borderBottom: '5px solid #fbbc04' }}>
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '10px' }}>Sarkari Naukri Portal 🚀</h1>
+        <p style={{ fontSize: '1.2rem' }}>Powered by <strong>ROSHAN KUMAR</strong></p>
       </header>
 
-      {/* Main Jobs Section */}
-      <main style={{ maxWidth: '900px', margin: '30px auto', padding: '0 15px' }}>
-        <h2 style={{ color: '#202124', borderLeft: '5px solid #1a73e8', paddingLeft: '15px', marginBottom: '25px' }}>Latest Job Notifications</h2>
+      <main style={{ maxWidth: '1000px', margin: '30px auto', padding: '0 20px' }}>
         
-        {jobs.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '50px', backgroundColor: 'white', borderRadius: '10px' }}>
-            <p style={{ color: '#70757a' }}>Nayi naukriyan khoji ja rahi hain... Kripya thoda intezar karein.</p>
+        {/* Owner Info Section */}
+        <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '15px', display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '30px', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}>
+          <div style={{ width: '80px', height: '80px', borderRadius: '50%', backgroundColor: '#ddd', overflow: 'hidden', border: '3px solid #1a73e8' }}>
+            <img src="https://via.placeholder.com/80" alt="Roshan Kumar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
-        ) : (
-          jobs.map((job) => (
-            <div key={job.id} style={{ backgroundColor: 'white', margin: '15px 0', padding: '20px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', display: 'flex', flexDirection: 'column', gap: '10px', border: '1px solid #e8eaed' }}>
-              <h3 style={{ margin: 0, color: '#1a73e8', fontSize: '1.3rem' }}>{job.title}</h3>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '10px' }}>
-                <span style={{ backgroundColor: '#e8f0fe', color: '#1967d2', padding: '5px 12px', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 'bold' }}>Update: {job.date}</span>
-                <a href={job.link} target="_blank" style={{ backgroundColor: '#34a853', color: 'white', padding: '10px 25px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', boxShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>View Details</a>
+          <div>
+            <h2 style={{ margin: 0, color: '#1a73e8' }}>ROSHAN KUMAR</h2>
+            <p style={{ margin: 0, color: '#5f6368' }}>Founder & Chief Administrator</p>
+          </div>
+        </div>
+
+        <h2 style={{ borderBottom: '2px solid #ddd', paddingBottom: '10px', color: '#202124' }}>Latest Vacancies</h2>
+        
+        {/* Job Cards */}
+        <div style={{ display: 'grid', gap: '15px' }}>
+          {jobs.length === 0 ? (
+            <p>Scanning internet for new jobs...</p>
+          ) : (
+            jobs.map((job) => (
+              <div key={job.id} style={{ backgroundColor: 'white', padding: '20px', borderRadius: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: '1px solid #e0e0e0' }}>
+                <div>
+                  <h3 style={{ margin: '0 0 5px 0', color: '#d93025' }}>{job.title}</h3>
+                  <small style={{ color: '#70757a' }}>Posted on: {job.date}</small>
+                </div>
+                <a href={job.link} target="_blank" style={{ backgroundColor: '#188038', color: 'white', padding: '10px 20px', borderRadius: '5px', textDecoration: 'none', fontWeight: 'bold' }}>View Link</a>
               </div>
-            </div>
-          ))
-        )}
+            ))
+          )}
+        </div>
       </main>
 
-      {/* Contact & Admin Section (Aapki Jankari ke saath) */}
-      <footer style={{ backgroundColor: '#202124', color: 'white', padding: '40px 20px', marginTop: '60px', textAlign: 'center' }}>
-        <h3 style={{ color: '#fbbc04' }}>📩 Admin Support (Contact Us)</h3>
-        <p style={{ marginBottom: '10px' }}>Kisi bhi sahayata ya shikayat ke liye niche diye gaye details par sampark karein:</p>
-        
-        <div style={{ backgroundColor: '#303134', display: 'inline-block', padding: '15px 30px', borderRadius: '10px', marginTop: '10px' }}>
-          <p style={{ margin: '5px 0' }}>📧 <strong>Email:</strong> roshan.kumar.official@outlook.com</p>
-          <p style={{ margin: '5px 0' }}>📞 <strong>WhatsApp/Call:</strong> +91 9310245458</p>
-        </div>
-        
-        <p style={{ marginTop: '30px', fontSize: '0.8rem', color: '#9aa0a6' }}>© 2025 Sarkari Naukri Bot | Design by Roshan Kumar</p>
+      {/* Contact Footer */}
+      <footer style={{ backgroundColor: '#202124', color: 'white', padding: '40px', marginTop: '50px', textAlign: 'center' }}>
+        <h3 style={{ color: '#fbbc04' }}>Contact Info</h3>
+        <p>📧 Email: roshan.kumar.official@outlook.com</p>
+        <p>📞 Phone/WhatsApp: +91 9310245458</p>
+        <hr style={{ borderColor: '#3c4043', margin: '20px 0' }} />
+        <p>© 2025 | Created with ❤️ by Roshan Kumar</p>
       </footer>
     </div>
   )
-        }
-          
+          }
+            
